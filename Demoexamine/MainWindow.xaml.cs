@@ -39,8 +39,8 @@ namespace Demoexamine
 
         private void DrawFirstStep()
         {
-            BtnNextStep.IsEnabled = true;
-            BtnSkipStep.IsEnabled = true;
+            BtnNextStep.Visibility = Visibility.Visible;
+            BtnSkipStep.Visibility = Visibility.Visible;
 
             GridInputsAndDataOfStep.Children.Clear();
 
@@ -197,8 +197,8 @@ namespace Demoexamine
 
         private void DrawSecondStep()
         {
-            BtnNextStep.IsEnabled = true;
-            BtnSkipStep.IsEnabled = true;
+            BtnNextStep.Visibility = Visibility.Visible;
+            BtnSkipStep.Visibility = Visibility.Visible;
 
             GridInputsAndDataOfStep.Children.Clear();
 
@@ -215,8 +215,8 @@ namespace Demoexamine
 
         private void DrawThirdStep()
         {
-            BtnNextStep.IsEnabled = true;
-            BtnSkipStep.IsEnabled = true;
+            BtnNextStep.Visibility = Visibility.Visible;
+            BtnSkipStep.Visibility = Visibility.Visible;
 
             GridInputsAndDataOfStep.Children.Clear();
 
@@ -232,8 +232,8 @@ namespace Demoexamine
 
         private void DrawFourthStep()
         {
-            BtnNextStep.IsEnabled = false;
-            BtnSkipStep.IsEnabled = false;
+            BtnNextStep.Visibility = Visibility.Hidden;
+            BtnSkipStep.Visibility = Visibility.Hidden;
 
             GridInputsAndDataOfStep.Children.Clear();
 
@@ -289,6 +289,9 @@ namespace Demoexamine
 
             BtnNextStep.Click -= BtnNextStepSecond_Click;
             BtnNextStep.Click += BtnNextStepThird_Click;
+            BtnSkipStep.Click -= BtnSkipStepFirst_Click;
+            BtnSkipStep.Click += BtnSkipStepSecond_Click;
+
             DrawSecondStep();
         }
 
@@ -301,6 +304,9 @@ namespace Demoexamine
 
             BtnNextStep.Click -= BtnNextStepSecond_Click;
             BtnNextStep.Click += BtnNextStepThird_Click;
+            BtnSkipStep.Click -= BtnSkipStepFirst_Click;
+            BtnSkipStep.Click += BtnSkipStepSecond_Click;
+
             DrawSecondStep();
         }
 
@@ -308,6 +314,8 @@ namespace Demoexamine
         {
             BtnNextStep.Click -= BtnNextStepThird_Click;
             BtnNextStep.Click += BtnNextStepFourth_Click;
+            BtnSkipStep.Click -= BtnSkipStepSecond_Click;
+            BtnSkipStep.Click += BtnSkipStepThird_Click;
 
             DrawThirdStep();
         }
@@ -315,6 +323,8 @@ namespace Demoexamine
         {
             BtnNextStep.Click -= BtnNextStepThird_Click;
             BtnNextStep.Click += BtnNextStepFourth_Click;
+            BtnSkipStep.Click -= BtnSkipStepSecond_Click;
+            BtnSkipStep.Click += BtnSkipStepThird_Click;
 
             DrawThirdStep();
         }
@@ -340,6 +350,11 @@ namespace Demoexamine
             BtnNextStep.Click -= BtnNextStepThird_Click;
             BtnNextStep.Click -= BtnNextStepFourth_Click;
             BtnNextStep.Click += BtnNextStepSecond_Click;
+
+            BtnSkipStep.Click -= BtnSkipStepFirst_Click;
+            BtnSkipStep.Click -= BtnSkipStepSecond_Click;
+            BtnSkipStep.Click -= BtnSkipStepThird_Click;
+            BtnSkipStep.Click += BtnSkipStepFirst_Click;
 
             DrawFirstStep();
         }
