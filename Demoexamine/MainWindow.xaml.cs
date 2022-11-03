@@ -240,7 +240,7 @@ namespace Demoexamine
                 return;
             }
 
-            if (txtBoxAmountOfPeople.Text != "" && !Int32.TryParse(txtBoxAmountOfPeople.Text, out AmountOfPeople))
+            if (txtBoxAmountOfPeople.Text == "" || !Int32.TryParse(txtBoxAmountOfPeople.Text, out AmountOfPeople))
             {
                 return;
             }
@@ -248,6 +248,21 @@ namespace Demoexamine
             AreThereAnyChildrens = (bool)chckBxChildren.IsChecked;
 
             DrawSecondStep();
+        }
+
+        private void BtnSkipStep_Click(object sender, RoutedEventArgs e)
+        {
+            if (txtBoxAmountOfPeople.Text == "" || !Int32.TryParse(txtBoxAmountOfPeople.Text, out AmountOfPeople))
+            {
+                return;
+            }
+
+            DrawSecondStep();
+        }
+
+        private void BtnFind_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
