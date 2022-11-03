@@ -209,6 +209,41 @@ namespace Demoexamine
 
             TxtBlckNameOfStep.Text = "Предпочтения";
 
+            
+
+        }
+
+        private void DrawThirdStep()
+        {
+            BtnNextStep.IsEnabled = true;
+            BtnSkipStep.IsEnabled = true;
+
+            GridInputsAndDataOfStep.Children.Clear();
+
+            EllpsFirstStep.Fill = System.Windows.Media.Brushes.Gray;
+            EllpsSecondStep.Fill = System.Windows.Media.Brushes.Gray;
+            EllpsThirdStep.Fill = System.Windows.Media.Brushes.Green;
+            EllpsFourthStep.Fill = System.Windows.Media.Brushes.White;
+
+            TxtBlckNameOfStep.Text = "Условия отеля";
+
+
+        }
+
+        private void DrawFourthStep()
+        {
+            BtnNextStep.IsEnabled = false;
+            BtnSkipStep.IsEnabled = false;
+
+            GridInputsAndDataOfStep.Children.Clear();
+
+            EllpsFirstStep.Fill = System.Windows.Media.Brushes.Gray;
+            EllpsSecondStep.Fill = System.Windows.Media.Brushes.Gray;
+            EllpsThirdStep.Fill = System.Windows.Media.Brushes.Gray;
+            EllpsFourthStep.Fill = System.Windows.Media.Brushes.Green;
+
+            TxtBlckNameOfStep.Text = "Результаты поиска";
+
 
         }
 
@@ -223,7 +258,7 @@ namespace Demoexamine
             DrawFirstStep();
         }
 
-        private void BtnNextStep_Click(object sender, RoutedEventArgs e)
+        private void BtnNextStepSecond_Click(object sender, RoutedEventArgs e)
         {
             if (DatePckrBeginOfTour.SelectedDate != null && DatePckrEndOfTour.SelectedDate != null && DatePckrBeginOfTour.SelectedDate >= DatePckrEndOfTour.SelectedDate)
             {
@@ -240,7 +275,6 @@ namespace Demoexamine
                 DateTimeEndOfTour = (DateTime)DatePckrEndOfTour.SelectedDate;
             }
             
-
             if (txtBoxAmountOfDays.Text != "" && !Int32.TryParse(txtBoxAmountOfDays.Text, out AmountOfDays))
             {
                 return;
@@ -253,17 +287,45 @@ namespace Demoexamine
 
             AreThereAnyChildrens = (bool)chckBxChildren.IsChecked;
 
+            BtnNextStep.Click -= BtnNextStepSecond_Click;
+            BtnNextStep.Click += BtnNextStepThird_Click;
             DrawSecondStep();
         }
 
-        private void BtnSkipStep_Click(object sender, RoutedEventArgs e)
+        private void BtnSkipStepFirst_Click(object sender, RoutedEventArgs e)
         {
             if (txtBoxAmountOfPeople.Text == "" || !Int32.TryParse(txtBoxAmountOfPeople.Text, out AmountOfPeople))
             {
                 return;
             }
 
+            BtnNextStep.Click -= BtnNextStepSecond_Click;
+            BtnNextStep.Click += BtnNextStepThird_Click;
             DrawSecondStep();
+        }
+
+        private void BtnNextStepThird_Click(object sender, RoutedEventArgs e) 
+        {
+            BtnNextStep.Click -= BtnNextStepThird_Click;
+            BtnNextStep.Click += BtnNextStepFourth_Click;
+
+            DrawThirdStep();
+        }
+        private void BtnSkipStepSecond_Click(object sender, RoutedEventArgs e) 
+        {
+            BtnNextStep.Click -= BtnNextStepThird_Click;
+            BtnNextStep.Click += BtnNextStepFourth_Click;
+
+            DrawThirdStep();
+        }
+
+        private void BtnNextStepFourth_Click(object sender, RoutedEventArgs e) 
+        {
+            DrawFourthStep();
+        }
+        private void BtnSkipStepThird_Click(object sender, RoutedEventArgs e) 
+        {
+            DrawFourthStep();
         }
 
         private void BtnFind_Click(object sender, RoutedEventArgs e)
@@ -273,6 +335,11 @@ namespace Demoexamine
             AmountOfDays = -1;
             AmountOfPeople = -1;
             AreThereAnyChildrens = false;
+
+            BtnNextStep.Click -= BtnNextStepSecond_Click;
+            BtnNextStep.Click -= BtnNextStepThird_Click;
+            BtnNextStep.Click -= BtnNextStepFourth_Click;
+            BtnNextStep.Click += BtnNextStepSecond_Click;
 
             DrawFirstStep();
         }
