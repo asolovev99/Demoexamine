@@ -22,8 +22,15 @@ namespace Demoexamine
     {
         private DatePicker DatePckrBeginOfTour;
         private DatePicker DatePckrEndOfTour;
-        
+        private TextBox txtBoxAmountOfDays;
+        private TextBox txtBoxAmountOfPeople;
+        private CheckBox chckBxChildren;
 
+        private DateTime DateTimeBeginOfTour;
+        private DateTime DateTimeEndOfTour;
+        private int AmountOfDays;
+        private int AmountOfPeople;
+        private bool AreThereAnyChildrens;
 
         public MainWindow()
         {
@@ -132,7 +139,7 @@ namespace Demoexamine
             borderTxtBxAmountOfDays.Margin = new Thickness(190, 90, 0, 0);
 
             // <TextBox Width="40" Height="24">
-            TextBox txtBoxAmountOfDays = new TextBox();
+            txtBoxAmountOfDays = new TextBox();
             txtBoxAmountOfDays.Width = 40;
             txtBoxAmountOfDays.Height = 24;
 
@@ -140,13 +147,41 @@ namespace Demoexamine
 
 
 
+            // <TextBlock HorizontalAlignment="Left" Margin="48,133,0,0" TextWrapping="Wrap" Text="Количество человек" VerticalAlignment="Top" FontFamily="/Demoexamine;component/Document fonts/#Akrobat Bold" FontSize="16"/>
+            TextBlock TxtBlckTxtBxAmountOfPeople = new TextBlock();
+            TxtBlckTxtBxAmountOfPeople.HorizontalAlignment = HorizontalAlignment.Left;
+            TxtBlckTxtBxAmountOfPeople.VerticalAlignment = VerticalAlignment.Top;
+            TxtBlckTxtBxAmountOfPeople.Margin = new Thickness(48, 133, 0, 0);
+            TxtBlckTxtBxAmountOfPeople.TextWrapping = TextWrapping.Wrap;
+            TxtBlckTxtBxAmountOfPeople.Text = "Количество человек";
+            TxtBlckTxtBxAmountOfPeople.FontSize = 14;
+
+            // <Border BorderBrush="Black" BorderThickness="2" HorizontalAlignment="Left" Height="auto" Margin="190,130,0,0" VerticalAlignment="Top" Width="auto">
+            // <TextBox Width="40" Height="24"></TextBox>
+            Border borderTxtBxAmountOfPeople = new Border();
+            borderTxtBxAmountOfPeople.BorderBrush = System.Windows.Media.Brushes.Black;
+            borderTxtBxAmountOfPeople.BorderThickness = new Thickness(2);
+            borderTxtBxAmountOfPeople.HorizontalAlignment = HorizontalAlignment.Left;
+            borderTxtBxAmountOfPeople.VerticalAlignment = VerticalAlignment.Top;
 
 
+            borderTxtBxAmountOfPeople.Margin = new Thickness(190, 130, 0, 0);
 
+            // <TextBox Width="40" Height="24">
+            txtBoxAmountOfPeople = new TextBox();
+            txtBoxAmountOfPeople.Width = 40;
+            txtBoxAmountOfPeople.Height = 24;
 
+            borderTxtBxAmountOfPeople.Child = txtBoxAmountOfPeople;
 
+            // <CheckBox Content="Дети" HorizontalAlignment="Left" Margin="265,137,0,0" VerticalAlignment="Top" FontFamily="/Demoexamine;component/Document fonts/#Akrobat Bold" FontSize="16"/>
 
-
+            chckBxChildren = new CheckBox();
+            chckBxChildren.Content = "Дети";
+            chckBxChildren.HorizontalAlignment = HorizontalAlignment.Left;
+            chckBxChildren.VerticalAlignment = VerticalAlignment.Top;
+            chckBxChildren.Margin = new Thickness(265, 137, 0, 0);
+            chckBxChildren.FontSize = 14;
 
 
             GridInputsAndDataOfStep.Children.Add(borderDatePckrBeginOfTour);
@@ -155,7 +190,24 @@ namespace Demoexamine
             GridInputsAndDataOfStep.Children.Add(TxtBlckDatePckrEndOfTour);
             GridInputsAndDataOfStep.Children.Add(TxtBlckTxtBxAmountOfDays);
             GridInputsAndDataOfStep.Children.Add(borderTxtBxAmountOfDays);
+            GridInputsAndDataOfStep.Children.Add(TxtBlckTxtBxAmountOfPeople);
+            GridInputsAndDataOfStep.Children.Add(borderTxtBxAmountOfPeople);
+            GridInputsAndDataOfStep.Children.Add(chckBxChildren);
+        }
 
+        private void DrawSecondStep()
+        {
+            BtnNextStep.IsEnabled = true;
+            BtnSkipStep.IsEnabled = true;
+
+            GridInputsAndDataOfStep.Children.Clear();
+
+            EllpsFirstStep.Fill = System.Windows.Media.Brushes.Gray;
+            EllpsSecondStep.Fill = System.Windows.Media.Brushes.Green;
+            EllpsThirdStep.Fill = System.Windows.Media.Brushes.White;
+            EllpsFourthStep.Fill = System.Windows.Media.Brushes.White;
+
+            TxtBlckNameOfStep.Text = "Предпочтения";
 
 
         }
@@ -165,6 +217,37 @@ namespace Demoexamine
             DrawFirstStep();
         }
 
+        private void BtnNextStep_Click(object sender, RoutedEventArgs e)
+        {
+            if (DatePckrBeginOfTour.SelectedDate != null && DatePckrEndOfTour.SelectedDate != null && DatePckrBeginOfTour.SelectedDate >= DatePckrEndOfTour.SelectedDate)
+            {
+                return;
+            }
 
+            if (DatePckrBeginOfTour.SelectedDate != null)
+            {
+                DateTimeBeginOfTour = (DateTime)DatePckrBeginOfTour.SelectedDate;
+            }
+
+            if (DatePckrEndOfTour.SelectedDate != null)
+            {
+                DateTimeEndOfTour = (DateTime)DatePckrEndOfTour.SelectedDate;
+            }
+            
+
+            if (txtBoxAmountOfDays.Text != "" && !Int32.TryParse(txtBoxAmountOfDays.Text, out AmountOfDays))
+            {
+                return;
+            }
+
+            if (txtBoxAmountOfPeople.Text != "" && !Int32.TryParse(txtBoxAmountOfPeople.Text, out AmountOfPeople))
+            {
+                return;
+            }
+
+            AreThereAnyChildrens = (bool)chckBxChildren.IsChecked;
+
+            DrawSecondStep();
+        }
     }
 }
