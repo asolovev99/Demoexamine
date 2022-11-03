@@ -5,13 +5,89 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Demoexamine"
         mc:Ignorable="d"
-        Title="MainWindow" Height="500" Width="500">
-    <Grid>
-        <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="50" Height="50">
-            <Ellipse Fill="Yellow" Height="50" Width="50" Stroke="Black" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" >
-            </Ellipse>
-            <TextBlock Text="1" FontFamily="/Demoexamine;component/Document fonts/#Akrobat Bold" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" FontSize="18" TextAlignment="Center" Margin="0,14,0,0"/>
+        Title="Туристическое агенство" Height="500" Width="500" Loaded="MainWindow_Loaded">
+    <Grid >
+        <Grid Margin="17,24,0,0" Width="40" HorizontalAlignment="Left" VerticalAlignment="Top" Height="20">
+            <Line X1="0" Y1="0" X2="40" Y2="0" Stroke="Black" Width="40" Height="1" HorizontalAlignment="Center" VerticalAlignment="Top" />
+            <Line X1="0" Y1="0" X2="40" Y2="0" Stroke="Black" Width="40" Height="1" HorizontalAlignment="Center" VerticalAlignment="Center" />
+            <Line X1="0" Y1="0" X2="40" Y2="0" Stroke="Black" Width="40" Height="1" HorizontalAlignment="Center" VerticalAlignment="Bottom" />
         </Grid>
+        <Button Content="Поиск" HorizontalAlignment="Left" Margin="64,10,0,0" VerticalAlignment="top" Width="101" Height="34">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="15, 15, 0, 0"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Button Content="Избранное" HorizontalAlignment="Left" Margin="170,10,0,0" VerticalAlignment="Top" Width="101" Height="34">
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="15, 15, 0, 0"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+
+        <TextBlock HorizontalAlignment="Left" Margin="64,54,0,0" TextWrapping="Wrap" Text="Шаг 1" VerticalAlignment="Top" FontFamily="/Demoexamine;component/Document fonts/#Akrobat Bold" FontSize="18" Width="44" Height="26"/>
+        <TextBlock HorizontalAlignment="Left" Margin="163,54,0,0" TextWrapping="Wrap" Text="Шаг 2" VerticalAlignment="Top" FontFamily="/Demoexamine;component/Document fonts/#Akrobat Bold" FontSize="18" Width="44" Height="26"/>
+        <TextBlock HorizontalAlignment="Left" Margin="270,54,0,0" TextWrapping="Wrap" Text="Шаг 3" VerticalAlignment="Top" FontFamily="/Demoexamine;component/Document fonts/#Akrobat Bold" FontSize="18" Width="44" Height="26"/>
+        <TextBlock HorizontalAlignment="Left" Margin="385,54,0,0" TextWrapping="Wrap" Text="Шаг 4" VerticalAlignment="Top" FontFamily="/Demoexamine;component/Document fonts/#Akrobat Bold" FontSize="18" Width="44" Height="26"/>
+
+        <Grid HorizontalAlignment="Left" VerticalAlignment="Top" Width="50" Height="50" Margin="58,77,0,0">
+            <Ellipse x:Name="EllpsFirstStep" Fill="Green" Height="50" Width="50" Stroke="Black" VerticalAlignment="Center" HorizontalAlignment="Center" >
+            </Ellipse>
+            <TextBlock Text="1" FontFamily="/Demoexamine;component/Document fonts/#Akrobat Bold" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="18" TextAlignment="Center" Margin="22,14"/>
+        </Grid>
+        <Line X1="0" Y1="0" X2="50" Y2="0" Stroke="DarkBlue" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="108,102,0,0" Height="1" Width="50"/>
+        <Grid HorizontalAlignment="Left" VerticalAlignment="Top" Width="50" Height="50" Margin="157,77,0,0">
+            <Ellipse x:Name="EllpsSecondStep" Fill="White" Height="50" Width="50" Stroke="Black" VerticalAlignment="Center" HorizontalAlignment="Center" >
+            </Ellipse>
+            <TextBlock Text="2" FontFamily="/Demoexamine;component/Document fonts/#Akrobat Bold" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="18" TextAlignment="Center" Margin="21,15,21,13"/>
+        </Grid>
+        <Line X1="0" Y1="0" X2="57" Y2="0" Stroke="DarkBlue" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="207,102,0,0" Height="1" Width="57"/>
+        <Grid HorizontalAlignment="Left" VerticalAlignment="Top" Width="50" Height="50" Margin="264,79,0,0">
+            <Ellipse x:Name="EllpsThirdStep" Fill="White" Height="50" Width="50" Stroke="Black" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,-2,0,2" >
+            </Ellipse>
+            <TextBlock Text="3" FontFamily="/Demoexamine;component/Document fonts/#Akrobat Bold" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="18" TextAlignment="Center" Margin="21,12,21,16"/>
+        </Grid>
+        <Line X1="0" Y1="0" X2="66" Y2="0" Stroke="DarkBlue" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="314,102,0,0" Height="1" Width="66"/>
+        <Grid HorizontalAlignment="Left" VerticalAlignment="Top" Width="50" Height="50" Margin="380,79,0,0">
+            <Ellipse x:Name="EllpsFourthStep" Fill="White" Height="50" Width="50" Stroke="Black" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,-2,0,2" >
+            </Ellipse>
+            <TextBlock Text="4" FontFamily="/Demoexamine;component/Document fonts/#Akrobat Bold" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="18" TextAlignment="Center" Margin="21,12,21,16"/>
+        </Grid>
+
+        <TextBlock x:Name="TxtBlckNameOfStep" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Основная информация" VerticalAlignment="Top" Margin="150,133,0,0" Width="200" Height="21" FontSize="18" FontFamily="/Demoexamine;component/Document fonts/#Akrobat Bold" TextAlignment="Center"/>
+
+        <Border BorderBrush="Black" BorderThickness="2" Margin="14,159,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="458" Height="253">
+            <Grid x:Name="GridInputsAndDataOfStep" HorizontalAlignment="Left" Margin="0, 0, 0, 0" VerticalAlignment="Top" Width="454" Height="249">
+                <Border BorderBrush="Black" BorderThickness="2" HorizontalAlignment="Left" Height="auto" Margin="190,10,0,0" VerticalAlignment="Top" Width="auto">
+                    <DatePicker HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" Width="160" Height="24"/>
+                </Border>
+                <TextBlock HorizontalAlignment="Left" Margin="42,13,0,0" TextWrapping="Wrap" Text="Дата начала периода" VerticalAlignment="Top" FontFamily="/Demoexamine;component/Document fonts/#Akrobat Bold" FontSize="16"/>
+
+                <Border BorderBrush="Black" BorderThickness="2" HorizontalAlignment="Left" Height="auto" Margin="190,50,0,0" VerticalAlignment="Top" Width="auto">
+                    <DatePicker HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" Width="160" Height="24"/>
+                </Border>
+                <TextBlock HorizontalAlignment="Left" Margin="21,53,0,0" TextWrapping="Wrap" Text="Дата окончания периода" VerticalAlignment="Top" FontFamily="/Demoexamine;component/Document fonts/#Akrobat Bold" FontSize="16"/>
+                
+                <TextBlock HorizontalAlignment="Left" Margin="69,93,0,0" TextWrapping="Wrap" Text="Количество дней" VerticalAlignment="Top" FontFamily="/Demoexamine;component/Document fonts/#Akrobat Bold" FontSize="16"/>
+                <Border BorderBrush="Black" BorderThickness="2" HorizontalAlignment="Left" Height="auto" Margin="190,90,0,0" VerticalAlignment="Top" Width="auto">
+                    <TextBox Width="40" Height="24"></TextBox>
+                </Border>
+                
+                <TextBlock HorizontalAlignment="Left" Margin="48,133,0,0" TextWrapping="Wrap" Text="Количество человек" VerticalAlignment="Top" FontFamily="/Demoexamine;component/Document fonts/#Akrobat Bold" FontSize="16"/>
+                <Border BorderBrush="Black" BorderThickness="2" HorizontalAlignment="Left" Height="auto" Margin="190,130,0,0" VerticalAlignment="Top" Width="auto">
+                    <TextBox Width="40" Height="24"></TextBox>
+                </Border>
+                <CheckBox Content="Дети" HorizontalAlignment="Left" Margin="265,137,0,0" VerticalAlignment="Top" FontFamily="/Demoexamine;component/Document fonts/#Akrobat Bold" FontSize="16"/>
+            </Grid>
+        </Border>
+
+        <Button x:Name="BtnSkipStep" Content="Пропустить" HorizontalAlignment="Left" Margin="140,428,0,0" VerticalAlignment="Top" Width="90" Height="25" FontFamily="/Demoexamine;component/Document fonts/#Akrobat Bold" FontSize="14"/>
+        <Button x:Name="BtnNextStep" Content="Далее" HorizontalAlignment="Left" Margin="262,428,0,0" VerticalAlignment="Top" Width="90" Height="25" FontFamily="/Demoexamine;component/Document fonts/#Akrobat Bold" FontSize="14"/>
+
+
     </Grid>
+
 
 </Window>
