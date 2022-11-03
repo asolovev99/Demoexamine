@@ -214,6 +214,12 @@ namespace Demoexamine
 
         private void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
+            DateTimeBeginOfTour = DateTime.MinValue;
+            DateTimeEndOfTour = DateTime.MinValue;
+            AmountOfDays = -1;
+            AmountOfPeople = -1;
+            AreThereAnyChildrens = false;
+
             DrawFirstStep();
         }
 
@@ -262,7 +268,13 @@ namespace Demoexamine
 
         private void BtnFind_Click(object sender, RoutedEventArgs e)
         {
+            DateTimeBeginOfTour = DateTime.MinValue;
+            DateTimeEndOfTour = DateTime.MinValue;
+            AmountOfDays = -1;
+            AmountOfPeople = -1;
+            AreThereAnyChildrens = false;
 
+            DrawFirstStep();
         }
     }
 }
